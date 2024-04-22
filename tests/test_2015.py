@@ -31,3 +31,12 @@ class TestDay2:
         output = Day2.part_2(input)
 
         assert output == expected
+
+
+class TestDay3:
+    def test_part_1(self):
+        input = [">", "^>v<", "^v^v^v^v^v"]
+        expected = [2, 4, 2]
+        output = Day3.part_1(input)
+
+        assert output == expected
