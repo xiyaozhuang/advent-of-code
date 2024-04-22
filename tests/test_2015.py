@@ -37,6 +37,6 @@ class TestDay3:
     def test_part_1(self):
         input = [">", "^>v<", "^v^v^v^v^v"]
         expected = [2, 4, 2]
-        output = Day3.part_1(input)
+        output = [Day3.part_1(item) for item in input]
 
         assert output == expected
