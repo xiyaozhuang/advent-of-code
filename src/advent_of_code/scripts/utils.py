@@ -26,16 +26,18 @@ def get_callables(obj):
 def get_solutions(input):
     output = {}
 
-    for key in input:
+    keys = list(input.keys())
+
+    for i in range(len(keys)):
+        key = keys[i]
+
         module = input[key]["module"]
-        class_objs = get_callables(module)
+        class_obj = get_callables(module)[i]
+        methods = get_callables(class_obj)
 
-        for class_obj in class_objs:
-            methods = get_callables(class_obj)
-
-            for i in range(len(methods)):
-                data = input[key]["data"]
-                method = methods[i]
-                output[f"{key}/part_{i + 1}"] = method(data)
+        for j in range(len(methods)):
+            data = input[key]["data"]
+            method = methods[j]
+            output[f"{key}/part_{j + 1}"] = method(data)
 
     return output
