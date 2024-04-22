@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Day1:
     def part_1(string):
         floor = 0
@@ -51,3 +54,31 @@ class Day2:
             total += min(perimeters) + volume
 
         return total
+
+
+class Day3:
+    def part_1(moves):
+        distance = len(moves)
+        n = 2 * distance + 1
+
+        grid = np.zeros((n, n), dtype=int)
+        row, col = distance, distance
+        grid[row, col] = 1
+
+        for move in moves:
+            if move == "^":
+                grid[row - 1, col] = 1
+                row -= 1
+
+            elif move == "v":
+                grid[row + 1, col] = 1
+                row += 1
+
+            elif move == "<":
+                grid[row, col - 1] = 1
+                col -= 1
+            else:
+                grid[row, col + 1] = 1
+                col += 1
+
+        return np.sum(grid)
