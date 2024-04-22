@@ -1,7 +1,7 @@
 from advent_of_code.year_2015 import *
 
 
-class TestDayOne:
+class TestDay1:
     def test_part_1(self):
         input = ("(())", "(((", "))(((((", "())", ")))")
         expected = [0, 3, 3, -1, -3]
@@ -13,5 +13,21 @@ class TestDayOne:
         input = ("))", "()())")
         expected = [1, 5]
         output = [Day1.part_2(item) for item in input]
+
+        assert output == expected
+
+
+class TestDay2:
+    def test_part_1(self):
+        input = "2x3x4\n1x1x10"
+        expected = 58 + 43
+        output = Day2.part_1(input)
+
+        assert output == expected
+
+    def test_part_2(self):
+        input = "2x3x4\n1x1x10"
+        expected = 34 + 14
+        output = Day2.part_2(input)
 
         assert output == expected
