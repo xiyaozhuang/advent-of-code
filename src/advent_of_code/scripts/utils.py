@@ -20,7 +20,7 @@ def load_data(modules, status, data_path):
 
 
 def get_callables(obj):
-    return [getattr(obj, attr) for attr in dir(obj) if not attr.startswith("_")]
+    return [getattr(obj, attr) for attr in dir(obj) if attr.startswith(("Day", "part"))]
 
 
 def get_solutions(input):
