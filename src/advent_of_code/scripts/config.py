@@ -1,5 +1,5 @@
 from advent_of_code import year_2015
 
 modules = (year_2015,)
-status = (2,)
+status = (3,)
 data_path = "data"
