@@ -87,3 +87,31 @@ class Day3:
             row, col = Day3.update_grid(grid, row, col, move)
 
         return np.sum(grid)
+
+    def part_2(moves):
+        distance = len(moves)
+        n = 2 * distance + 1
+
+        grid_santa = np.zeros((n, n), dtype=int)
+        grid_robot = np.zeros((n, n), dtype=int)
+        row_santa, col_santa = distance, distance
+        row_robot, col_robot = distance, distance
+        grid_santa[row_santa, col_santa] = 1
+        grid_robot[row_robot, col_robot] = 1
+
+        turn = 0
+
+        for move in moves:
+            if turn % 2 == 0:
+                row_santa, col_santa = Day3.update_grid(
+                    grid_santa, row_santa, col_santa, move
+                )
+
+            else:
+                row_robot, col_robot = Day3.update_grid(
+                    grid_robot, row_robot, col_robot, move
+                )
+
+            turn += 1
+
+        return np.count_nonzero(grid_santa + grid_robot)
