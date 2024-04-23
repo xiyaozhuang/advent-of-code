@@ -57,6 +57,24 @@ class Day2:
 
 
 class Day3:
+    def update_grid(grid, row, col, move):
+        if move == "^":
+            grid[row - 1, col] = 1
+            row -= 1
+
+        elif move == "v":
+            grid[row + 1, col] = 1
+            row += 1
+
+        elif move == "<":
+            grid[row, col - 1] = 1
+            col -= 1
+        else:
+            grid[row, col + 1] = 1
+            col += 1
+
+        return row, col
+
     def part_1(moves):
         distance = len(moves)
         n = 2 * distance + 1
@@ -66,19 +84,6 @@ class Day3:
         grid[row, col] = 1
 
         for move in moves:
-            if move == "^":
-                grid[row - 1, col] = 1
-                row -= 1
-
-            elif move == "v":
-                grid[row + 1, col] = 1
-                row += 1
-
-            elif move == "<":
-                grid[row, col - 1] = 1
-                col -= 1
-            else:
-                grid[row, col + 1] = 1
-                col += 1
+            row, col = Day3.update_grid(grid, row, col, move)
 
         return np.sum(grid)
