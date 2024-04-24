@@ -47,3 +47,19 @@ class TestDay3:
         output = [Day3.part_2(item) for item in input]
 
         assert output == expected
+
+
+class TestDay4:
+    def test_part_1(self):
+        input = ["abcdef", "pqrstuv"]
+        expected = [609043, 1048970]
+        output = [Day4.part_1(item) for item in input]
+
+        assert output == expected
+
+    def test_part_2(self):
+        input = ["abcdef", "pqrstuv"]
+        expected = [6742839, 5714438]
+        output = [Day4.part_2(item) for item in input]
+
+        assert output == expected
