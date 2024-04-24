@@ -1,4 +1,5 @@
 import numpy as np
+from hashlib import md5
 
 
 class Day1:
@@ -115,3 +116,22 @@ class Day3:
             turn += 1
 
         return np.count_nonzero(grid_santa + grid_robot)
+
+
+class Day4:
+    def search_md5(string, prefix):
+        hash_md5 = md5(string.encode()).hexdigest()
+        n = 0
+
+        while not hash_md5.startswith(prefix):
+            n += 1
+            new_string = string + str(n)
+            hash_md5 = md5(new_string.encode()).hexdigest()
+
+        return n
+
+    def part_1(string):
+        return Day4.search_md5(string, "00000")
+
+    def part_2(string):
+        return Day4.search_md5(string, "000000")
