@@ -139,14 +139,22 @@ class Day4:
 
 
 class Day5:
-    def part_1(string):
+    def naughty_or_nice(string, *conditions):
         strings = string.splitlines()
+        total = 0
 
+        for item in strings:
+            if all([condition(item) for condition in conditions]):
+                total += 1
+
+        return total
+
+    def part_1(string):
         condition1 = lambda x: sum([char in "aeiou" for char in x]) > 2
         condition2 = lambda x: bool(re.search(r"(.)\1", x))
         condition3 = lambda x: not bool(re.search("ab|cd|pq|xy", x))
 
-        total = 0
+        return Day5.naughty_or_nice(string, condition1, condition2, condition3)
 
         for item in strings:
             if condition1(item) and condition2(item) and condition3(item):
