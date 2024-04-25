@@ -72,3 +72,10 @@ class TestDay5:
         output = Day5.part_1(input)
 
         assert output == expected
+
+    def test_part_2(self):
+        input = "qjhvhtzxzqqjkmpb\nxxyxx\nuurcxstgmygtbstg\nieodomkazucvgmuy\n"
+        expected = 2
+        output = Day5.part_2(input)
+
+        assert output == expected
