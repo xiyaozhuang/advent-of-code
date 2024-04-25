@@ -156,8 +156,8 @@ class Day5:
 
         return Day5.naughty_or_nice(string, condition1, condition2, condition3)
 
-        for item in strings:
-            if condition1(item) and condition2(item) and condition3(item):
-                total += 1
+    def part_2(string):
+        condition1 = lambda x: bool(re.search(r"(..).*\1", x))
+        condition2 = lambda x: bool(re.search(r"(.).\1", x))
 
-        return total
+        return Day5.naughty_or_nice(string, condition1, condition2)
