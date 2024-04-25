@@ -63,3 +63,12 @@ class TestDay4:
         output = [Day4.part_2(item) for item in input]
 
         assert output == expected
+
+
+class TestDay5:
+    def test_part_1(self):
+        input = "ugknbfddgicrmopn\naaa\njchzalrnumimnmhp\nhaegwjzuvuyypxyu\ndvszwmarrgswjxmb\n"
+        expected = 2
+        output = Day5.part_1(input)
+
+        assert output == expected
