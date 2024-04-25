@@ -1,5 +1,6 @@
 import numpy as np
 from hashlib import md5
+import re
 
 
 class Day1:
@@ -135,3 +136,20 @@ class Day4:
 
     def part_2(string):
         return Day4.search_md5(string, "000000")
+
+
+class Day5:
+    def part_1(string):
+        strings = string.splitlines()
+
+        condition1 = lambda x: sum([char in "aeiou" for char in x]) > 2
+        condition2 = lambda x: bool(re.search(r"(.)\1", x))
+        condition3 = lambda x: not bool(re.search("ab|cd|pq|xy", x))
+
+        total = 0
+
+        for item in strings:
+            if condition1(item) and condition2(item) and condition3(item):
+                total += 1
+
+        return total
