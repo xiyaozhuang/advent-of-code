@@ -1,5 +1,6 @@
 import numpy as np
 from hashlib import md5
+import re
 
 
 class Day1:
@@ -135,3 +136,28 @@ class Day4:
 
     def part_2(string):
         return Day4.search_md5(string, "000000")
+
+
+class Day5:
+    def naughty_or_nice(string, *conditions):
+        strings = string.splitlines()
+        total = 0
+
+        for item in strings:
+            if all([condition(item) for condition in conditions]):
+                total += 1
+
+        return total
+
+    def part_1(string):
+        condition1 = lambda x: sum([char in "aeiou" for char in x]) > 2
+        condition2 = lambda x: bool(re.search(r"(.)\1", x))
+        condition3 = lambda x: not bool(re.search("ab|cd|pq|xy", x))
+
+        return Day5.naughty_or_nice(string, condition1, condition2, condition3)
+
+    def part_2(string):
+        condition1 = lambda x: bool(re.search(r"(..).*\1", x))
+        condition2 = lambda x: bool(re.search(r"(.).\1", x))
+
+        return Day5.naughty_or_nice(string, condition1, condition2)
