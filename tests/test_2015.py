@@ -88,3 +88,10 @@ class TestDay6:
         output = Day6.part_1(input)
 
         assert output == expected
+
+    def test_part_2(self):
+        input = "turn on 0,0 through 0,0\ntoggle 0,0 through 999,999\n"
+        expected = 1 + 2000000
+        output = Day6.part_2(input)
+
+        assert output == expected
