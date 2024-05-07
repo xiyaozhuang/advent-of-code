@@ -183,3 +183,23 @@ class Day6:
                 )
 
         return grid.sum()
+
+    def part_2(string):
+        instructions = string.splitlines()
+        grid = np.zeros((1000, 1000), dtype=int)
+
+        for instruction in instructions:
+            start_x, start_y, end_x, end_y = map(int, re.findall(r"\d+", instruction))
+
+            if "turn on" in instruction:
+                grid[start_x : end_x + 1, start_y : end_y + 1] += 1
+
+            elif "turn off" in instruction:
+                grid[start_x : end_x + 1, start_y : end_y + 1] = np.maximum(
+                    grid[start_x : end_x + 1, start_y : end_y + 1] - 1, 0
+                )
+
+            else:
+                grid[start_x : end_x + 1, start_y : end_y + 1] += 2
+
+        return grid.sum()
